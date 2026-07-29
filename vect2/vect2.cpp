@@ -61,18 +61,42 @@ vect2 vect2::operator+(const vect2 & source) const
 vect2 vect2::operator*(int num) const
 {
     vect2 tmp(*this);
-    tmp *= num;
+    tmp.x = tmp.x * num;
+    tmp.y = tmp.y * num;
     return tmp;
 }
+vect2 vect2::operator*(const vect2 & source) const
+{
+    vect2 tmp(*this);
 
+    tmp.x *= source.x;
+    tmp.y *= source.y;
+
+    return tmp;
+}
 
 vect2 &vect2::operator*=(int num)
 {
     this->x *= num;
     this->y *= num;
     return *this;
+}
+
+vect2 vect2::operator-() const
+{
+    vect2 tmp(*this);
+    tmp.x = -tmp.x;
+    tmp.y = -tmp.y;
+    return tmp;
 
 }
+vect2 &vect2::operator*=(const vect2 & source)
+{
+    this->x *= source.x;
+    this->y *= source.y;
+    return *this;
+}
+
 vect2 &vect2::operator-=(const vect2 & source)
 {
     this->x -= source.x;
